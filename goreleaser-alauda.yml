@@ -26,6 +26,19 @@ builds:
       - -s -w -X github.com/cloudflare/cfssl/cli/version.version=1.6.5
     main: ./cmd/cfssl
     binary: alauda-cfssl
+    id: cfssl
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X github.com/cloudflare/cfssl/cli/version.version=1.6.5
+    main: ./cmd/cfssljson
+    binary: alauda-cfssljson
+    id: cfssljson
 
 archives:
   - id: archive
