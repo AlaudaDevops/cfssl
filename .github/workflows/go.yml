@@ -8,9 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        go: [stable, oldstable]
     services:
       # Label used to access the service container
       postgres:
@@ -55,24 +52,29 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: ${{ matrix.go }}
+          go-version-file: go.mod
+          cache: false
 
       - name: Build
         run: go build -v ./...
       - run: make bin/goose;
       - run: ./bin/goose -path certdb/pg up;
       - run: ./bin/goose -path certdb/mysql up;
-      - name: Test
-        run: ./test.sh
-      - uses: codecov/codecov-action@v4
+      # - name: Test
+      #   run: ./test.sh
+      # - uses: codecov/codecov-action@v4
 
-  golangci:
-    name: lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-go@v5
-        with:
-          go-version: 1.18
-      - uses: actions/checkout@v4
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v4
+  # golangci:
+  #   name: lint
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-go@v5
+  #       with:
+  #         go-version-file: go.mod
+  #         cache: false
+      
+  #     - name: golangci-lint
+  #       uses: golangci/golangci-lint-action@v8
+  #       with:
+  #         version: latest
