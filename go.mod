@@ -16,7 +16,7 @@ require (
 	github.com/prometheus/client_golang v1.19.0
 	github.com/zmap/zcrypto v0.0.0-20230310154051-c8b263fd8300
 	github.com/zmap/zlint/v3 v3.5.0
-	golang.org/x/crypto v0.55.0
+	golang.org/x/crypto v0.56.0
 )
 
 require (
