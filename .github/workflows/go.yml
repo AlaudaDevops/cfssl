@@ -39,7 +39,6 @@ jobs:
 
     env:
       GOFLAGS: "-mod=vendor"
-      GODEBUG: "x509sha1=1"
       BUILD_TAGS: "postgresql"
       PGHOST: localhost
       MYSQL_HOST: 127.0.0.1
