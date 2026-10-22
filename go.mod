@@ -1,6 +1,7 @@
 module github.com/cloudflare/cfssl
 
 go 1.27.2
+toolchain go1.27.3
 
 require (
 	bitbucket.org/liamstask/goose v0.0.0-20150115234039-8488cc47d90c
